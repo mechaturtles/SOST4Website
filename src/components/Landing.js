@@ -10,7 +10,7 @@ class LandingPage extends Component {
           <p className = "Landing-header">Telehealth made simple</p>
         </div>
         <div className = "Landing-body">
-          <p > This is where info would be. </p>
+          <p className = "Landing-description"> We do cool stuff. </p>
         </div>
       </div>
     )
