@@ -7,7 +7,7 @@ import { Link, withRouter} from 'react-router-dom';
 import { withFirebase } from './firebase';
 
 const SignUpPage = () => (
-  <div>
+  <div className = "Sign-up-page">
     <header>SignUp</header>
     <SignUpForm />
   </div>
@@ -15,6 +15,8 @@ const SignUpPage = () => (
 
 const INITIAL_STATE = {
     email: '',
+    firstName: '',
+    lastName: '',
     passwordOne: '',
     passwordTwo: '',
     error: null,
@@ -28,13 +30,20 @@ const INITIAL_STATE = {
     }
   
     onSubmit = event => {
-      const { email, passwordOne } = this.state;
-  
+      const { firstName, lastName, email, passwordOne } = this.state;
+      
       this.props.firebase
         .doCreateUserWithEmailAndPassword(email, passwordOne)
         .then(authUser => {
           this.setState({ ...INITIAL_STATE });
           this.props.history.push('/home');
+          return this.props.firebase
+          .user(authUser.user.uid)
+          .set({
+            firstName,
+            lastName,
+            email,
+          });
         })
         .catch(error => {
           this.setState({ error });
@@ -56,7 +65,11 @@ const INITIAL_STATE = {
         passwordTwo,
         error,
       } = this.state;
-  
+
+      const nameFirst = (this.props.history.location.state && this.props.history.location.state.nameFirst) || "";
+
+      const nameLast = (this.props.history.location.state && this.props.history.location.state.nameLast) || "";
+
       const isInvalid =
         passwordOne !== passwordTwo ||
         passwordOne === '' ||
@@ -66,14 +79,18 @@ const INITIAL_STATE = {
         <div>
         <input
           name="firstName"
-          value = {firstName}
           type="text"
+          value = {firstName}
+          defaultValue = {nameFirst}
+          onChange={this.onChange}
           placeholder={"First Name"}
         />
        <input
           name="lastName"
           type="text"
           value = {lastName}
+          defaultValue = {nameLast}
+          onChange={this.onChange}
           placeholder={"Last Name"}
         />
         <form onSubmit={this.onSubmit}>

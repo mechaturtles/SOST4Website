@@ -2,20 +2,23 @@
 
 import app from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 
 const config = {
-    apiKey: "AIzaSyD8OcBTcbv9xpszlZteyTZt_S1iT0ltfXQ",
-    authDomain: "telehealth-8b8c1.firebaseapp.com",
-    databaseURL: "https://telehealth-8b8c1.firebaseio.com",
-    projectId: "telehealth-8b8c1",
-    storageBucket: '',
-    messagingSenderId: "962082039829",
+    apiKey: "AIzaSyDXJ9tOzCMP-1JA9z49OgWxjmF5SMzDCFw",
+    authDomain: "sosth4.firebaseapp.com",
+    databaseURL: "https://sosth4.firebaseio.com",
+    projectId: "sosth4",
+    storageBucket: 'sosth4.appspot.com',
+    messagingSenderId: "1051824348732",
+    appId: "1:1051824348732:web:3021f949a569149652ed39"
   };
  
 class Firebase {
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
+    this.db = app.database();
   }
 
     doCreateUserWithEmailAndPassword = (email, password) =>
@@ -30,6 +33,10 @@ class Firebase {
    
     doPasswordUpdate = password =>
       this.auth.currentUser.updatePassword(password);
+
+    user = uid => this.db.ref(`users/${uid}`);
+ 
+    users = () => this.db.ref('users');
 }
  
 export default Firebase;

@@ -7,8 +7,8 @@ import { SignUpLink } from './SignUp';
 import { withFirebase } from './firebase';
  
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
+  <div className = "Sign-in-page">
+    <header>SignIn</header>
     <SignInForm />
     <SignUpLink />
   </div>

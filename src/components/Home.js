@@ -15,17 +15,21 @@ class HomePage extends Component {
   }
 
   onClicking = event => {
+    const { firstName, lastName } = this.state; 
+
     this.props.history.push({
       pathname: '/signup',
       state: {
-        firstname: this.firstName,
-        lastName: this.lastName
+        nameFirst: firstName,
+        nameLast: lastName
       }
     })}
     
     onChange = event => {
       this.setState({ [event.target.name]: event.target.value });
+      console.log(event.target.value);
     };
+
     render(){
       const {
         firstName,

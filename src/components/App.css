@@ -6,17 +6,20 @@ html,body
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; 
+    font-family: Cardo;
+    font-style: normal;
+    font-weight: normal;
 }
 
 /*  Navigation bar */
 
 .Top-bar{
-    background-color: #FF7F51;
+    background-image: url('images/NavigationBar.png');
+    background-size: 100% 100%;
     border: none;
     outline: none;
-    height: 10vh;
-    width: 100vw;
+    height: 11vh;
+    width: 100%;
     position: fixed;
     z-index: 10;
 }
@@ -26,15 +29,15 @@ html,body
   display: inline;
   text-align: center;
   text-decoration: none;
-  font-family: Roboto, sans-serif;
+  font-family: Cardo;
   font-style: normal;
-  font-weight: bold;
-  font-size: 2.8vw;
-  color: white;
-  top: 2vh;
+  font-weight: normal;
+  font-size: 3.8vw;
+  color: #000000;
+  bottom: .5vh;
   size: 14vw;
-  padding-left:5vw;
-  padding-right: 43vw;
+  padding-left:10vw;
+  padding-right: 12vw;
 }
 
 .Top-navigation{
@@ -42,14 +45,20 @@ html,body
     display: inline;
     text-align: center;
     text-decoration: none;
-    font-family: Roboto, sans-serif;
+    font-family: Cardo;
     font-style: normal;
     font-weight: lighter;
-    font-size: 1.8vw;
-    color: white;
-    top: 1.5vh;
+    font-size: 2.8vw;
+    color: #000000;
+    bottom: 1vh;
     size: 14vw;
     padding-left: 6vw;
+  }
+
+  @media only screen and (max-width: 700px) {
+    /* For desktop: */
+    .Top-navigation {top:2vh;}
+    .Top-logo {top:2vh;}
   }
 
   .Top-link{
@@ -60,7 +69,7 @@ html,body
 
 .Landing-top{
   width: vw;
-  height: 70vh;
+  height: 110vh;
   background-image: url('images/OldCouple.png');
   background-attachment: fixed;
   background-position: center;
@@ -70,25 +79,8 @@ html,body
 }
 
 @keyframes fade-in {
-  from {opacity: 0; padding-bottom: 10vh;}
-  to {opacity: 1; padding-bottom: 0vh;}
-}
-
-.Landing-header{
-  position: relative;
-  align-self: flex-end;
-  margin: 0px;
-  height: 14vh;
-  width: 100vw;
-  font-family: Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 7vh;
-  left: 2vw;
-  color: #720026;
-  opacity: 0;
-  animation: fade-in 1s linear;
-  animation-fill-mode: forwards;
+  from {opacity: 0; margin-left: 10vw;}
+  to {opacity: 1; margin-left: 15vw;}
 }
 
 @media only screen and (min-width: 820px) {
@@ -101,26 +93,56 @@ html,body
   .Landing-header {font-size: 12vh;}
 }
 
-
-.Landing-body{
-  margin: 0px;
-  padding: 0px;
-  width: vw;
-  height: 90vh;
-  background-color: #FF9B54;
+.Landing-first-description{
+  height: 55vh;
+  width: 100vw;
+  background-image: url(./images/LandingBg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin-top: 100vh;
+  z-index: 0;
 }
 
-.Landing-description{
-  margin:0px;
-  text-align: center;
-  height: 90vh;
-  width: 50vw;
-  padding-left: 50vw;
-  color: #ffffff;
-  font-size: 5vw;
+.Landing-title{
+  height: 20vh;
+  width: 20vw;
+  right: 5vw;
+  z-index: 1;
+  font-size: 3vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: left;
+}
+
+.Landing-text{
+  margin-top:0px;
+  margin-left: 15vw;
+  height: 25vh;
+  width: 70vw;
+  right: 15vw;
+  text-align: center;
+  color: #ffffff;
+  font-size: 2vw;
+  display: flex;
+  justify-content: center;
+  color: #000000;
+  z-index: 1;
+  opacity: 0;
+  animation: fade-in 1s linear 1s;
+  animation-fill-mode: forwards;
+}
+
+.Landing-second-description{
+  text-align: center;
+  margin-top: 20vh;
+  height: 70vh;
+  width: 100vw;
+  background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%), #DDC9B4;
+}
+
+.Landing-second{
+  padding-top: 20vh;
 }
 
 
@@ -149,4 +171,17 @@ html,body
   font-weight: normal;
   font-size: 24px;
   line-height: 28px;
+}
+
+/* Sign In Page */
+
+.Sign-in-page
+{
+  padding-top: 40vh;
+}
+
+/* Sign Up Page */
+
+.Sign-up-page{
+  padding-top: 40vh;
 }
