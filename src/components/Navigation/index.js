@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import '../../index.css';
 
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
@@ -7,7 +8,7 @@ import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
  
 const Navigation = () => (
-  <div>
+  <div className = "no-margin">
     <AuthUserContext.Consumer>
       {authUser =>
         authUser ? <NavigationAuth /> : <NavigationNonAuth />
@@ -18,34 +19,21 @@ const Navigation = () => (
 
 //Admin should be hidden for non-admin roles
 const NavigationAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.HOME}>Home</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ADMIN}>Admin</Link>
-    </li>
-    <li>
-      <SignOutButton />
-    </li>
-  </ul>
+  <div className = "Top-bar"> 
+          <div className = "Top-link-logo"><p className = "Top-logo"> <Link to={ROUTES.HOME} className = "Top-no-decoration"> MyHealthRadar </Link> </p></div>
+          <div className = "Top-link-middle"><p className = "Top-navigation "> <Link to={ROUTES.HOME} className = "Top-no-decoration"> Appointments </Link> </p></div>
+          <div className = "Top-link-middle"><p className = "Top-navigation Top-more-bottom"> <Link to={ROUTES.HOME} className = "Top-no-decoration"> Contact Provider </Link> </p></div>
+          <div className = "Top-link-middle"><p className = "Top-navigation Top-more-bottom"> <Link to={ROUTES.HOME} className = "Top-no-decoration"> Past Data </Link> </p></div>
+          <div className = "Top-link-middle"><p className = "Top-navigation "> <Link to={ROUTES.ADMIN} className = "Top-no-decoration "> Profile </Link> </p></div>
+          <div className = "Top-link-end"> <SignOutButton /> </div>
+  </div>
 );
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
-  </ul>
+  <div className = "Top-bar"> 
+           <div className = "Top-link-logo"><p className = "Top-logo"> <Link to={ROUTES.LANDING} className = "Top-no-decoration"> MyHealthRadar </Link> </p></div>
+          <div className = "Top-link-sign-in"><p className = "Top-navigation"> <Link to={ROUTES.SIGN_IN} className = "Top-no-decoration "> Sign In </Link> </p></div>
+  </div>
 );
  
 export default Navigation;
