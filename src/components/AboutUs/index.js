@@ -3,12 +3,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../index.css';
+import * as ROUTES from '../../constants/routes';
  
 const AboutUs = () => (
   <div className = "Bottom-bar"> 
-          <p> About Us </p>
-          <p> | </p>
-          <p> Contact </p>
+          <p><span><Link to={ROUTES.LANDING} className = "Bottom-link"> About Us </Link></span> <span>|</span> <span>Contact Us</span> </p>
   </div>
 );
  

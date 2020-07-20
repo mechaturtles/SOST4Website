@@ -6,9 +6,11 @@ html,body
     height: 100%;
     margin: 0px;
     padding: 0px;
-    font-family: Cardo, sans-serif;
+    font-family: Helvetica, sans-serif;
     font-style: normal;
     font-weight: normal;
+    position: sticky;
+    position: -webkit-sticky;
 }
 
 .no-margin{
@@ -18,20 +20,17 @@ html,body
 /* Color */
 
 :root{
-  --main: #443266;
-  --second: #15A7DB;
-  --white: #ffffff;
+  --main: #004f04;
+  --second: #29434e;
+  --main-light: #60ac5d;
+  --second-light: #819ca9;
+  --off-white: #eeeeee;
 }
 
 /*  Navigation bar */
 
-.Top-no-decoration{
-  text-decoration: none;
-  color: white;
-}
-
 .Top-bar{
-    background-color: var(--main);
+    background-color: white;
     background-size: 100% 100%;
     border: none;
     outline: none;
@@ -40,81 +39,56 @@ html,body
     width: 100%;
     position: fixed;
     z-index: 10;
-    display: inline-flex;
-    flex-direction: row;
-    align-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.Top-options {
+  float: right;
+  font-size: 20px;
+  line-height: 3.8;
+  text-indent: 10px;
+  animation: text-move-in .25s ease-in;
+  animation-fill-mode: forwards;
+  font-weight: bold;
 }
 
 .Top-logo{
-  position: relative;
-  display: inline;
-  text-align: center;
-  text-decoration: none;
-  font-family: Cardo, sans-serif;
-  font-style: normal;
-  font-weight: bolder;
-  font-size: 32px;
-  color:  #ffffff ;
-  top: 9px;
-  size: 40px;
-  padding-left:5vw;
-  padding-right: 12vw;
+  float: left;
+  font-size-adjust: inherit;
 }
 
-.Top-navigation{
-    position: relative;
-    display: inline;
-    text-align: center;
-    text-decoration: none;
-    font-family: Cardo, sans-serif;
-    font-style: normal;
-    font-weight: lighter;
-    font-size: 20px;
-    color:  #ffffff;
-    size: 20px;
-    padding-left: 6vw;
-    display: flex;
-    justify-content: center;
-    bottom: 5px;
-  }
+@keyframes text-move-in {
+  from {padding-right: 10px; opacity: 0;}
+  to {padding-right: 0px; opacity: 1;}
+}
 
-  .Top-more-bottom{
-    bottom: 10px;
-  }
+.Top-link {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: none;
+  height: 60px;
+  color: var(--main);
+}
 
-  .Top-link-middle{
-    text-decoration: none;
-    width: 15vw;
-    text-align: center;
-  }
+.Top-logo-image{
+  height: 50px;
+  width: 160px;
+  padding-top: 2px;
+}
 
-  .Top-link-end{
-    text-decoration: none;
-    width: 15vw;
-    margin-right: 1vw;
-    text-align: center;
-    animation: text-move-in;
-  }
-
-  .Top-link-sign-in{
-    text-decoration: none;
-    width: 15vw;
-    margin-left: 45vw;
-    text-align: center;
-    animation: text-move-in;
-  }
-
-  @keyframes text-move-in {
-    from {text-indent: -1vw;}
-    to {text-indent: 0;}
-  }
-
-  .Top-link{
-    text-decoration: none;
-  }
+/* Change the link color to #111 (black) on hover */
+.Top-options a:hover {
+  color: var(--second-light);
+}
 
 .Top-dropbtn {
-  background-color: var(--white);
+  background-color: white;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -129,7 +103,7 @@ html,body
 .Top-dropdown-content {
   display: none;
   position: absolute;
-  background-color: var(--white);
+  background-color: white;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 2;
@@ -142,8 +116,8 @@ html,body
 /*  Landing page */
 
 .Landing-top{
-  width: vw;
-  height: 110vh;
+  width: 100%;
+  height: 90vh;
   background-image: url('images/OldCouple.png');
   background-attachment: fixed;
   background-position: center;
@@ -152,28 +126,13 @@ html,body
   display: flex;
 }
 
-@keyframes fade-in {
-  from {opacity: 0; margin-left: 10vw;}
-  to {opacity: 1; margin-left: 15vw;}
-}
-
-@media only screen and (min-width: 820px) {
-  /* For desktop: */
-  .Landing-header {font-size: 10vh;}
-}
-
-@media only screen and (min-width: 1200px) {
-  /* For desktop: */
-  .Landing-header {font-size: 12vh;}
-}
-
 .Landing-first-description{
   height: 50vh;
-  width: 100vw;
-  background-color: var(--second);
+  width: 100%;
+  background-color: var(--main-light);
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  margin-top: 100vh;
+  margin-top: 80vh;
   z-index: 0;
 }
 
@@ -183,7 +142,7 @@ html,body
   right: 5vw;
   z-index: 1;
   font-size: 3vw;
-  color: var(--white);
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -200,19 +159,25 @@ html,body
   font-size: 2vw;
   display: flex;
   justify-content: center;
-  color: var(--white);
+  color: white;
   z-index: 1;
-  opacity: 0;
-  animation: fade-in 1s linear 1s;
-  animation-fill-mode: forwards;
+}
+
+@media screen and (max-width: 700px) {
+  .Landing-text{
+    font-size: 3vw;
+  }
+  .Landing-title{
+    font-size: 4vw;
+  }
 }
 
 .Landing-second-description{
   text-align: center;
   margin-top: 20vh;
-  height: 70vh;
-  width: 100vw;
-  background: linear-gradient(270deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 100%), #DDC9B4;
+  height: 80vh;
+  width: 100%;
+  background: white;
 }
 
 .Landing-second{
@@ -220,7 +185,7 @@ html,body
 }
 
 .Landing-second-text-color{
-  color: var(--second)
+  color: var(--main-light)
 }
 
 
@@ -229,60 +194,128 @@ html,body
 
 .Home{
   padding-top: 60px;
+  overflow: hidden;
 }
 
 .Home-header{
   width: 100vw;
-  height: 100px;
+  height: 75px;
   font-size: 40px;
-  font-style: italic;
+  font-weight: bold;
   display: flex;
   justify-content: center;
-  background-color: var(--second);
-  color: var(--white);
+  background-color: var(--off-white);
+  color: var(--main);
 }
 
 .Home-header-text{
-  padding-right: 75vw;
+  padding-left: 25px;
   padding-top: 45px;
+  width: 100vw;
+}
+
+.Home-sub{
+  width: 100vw;
+  height: 100px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  background-color: var(--off-white);
+  color: var(--main-light);
+}
+
+.Home-sub-text{
+  padding-left: 25px;
+  padding-top: 45px;
+  width: 100vw;
 }
 
 .Home-body{
+  padding-top: 40px;
   width: 100vw;
-  height: 600px;
-  background-color: var(--white);
+  height: 1200px;
+  background-color: var(--off-white);
   color: var(--second);
   display: flex;
   justify-content: center;
 }
 
-.Home-chart{
-  padding-top: 40px;
+.Body-elements{
+  border-radius: 30px;
+  background-color: white;
   width: 90vw;
-  height: 250px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
+.Home-chart-header{
+  color: var(--second-light);
+  padding-top: 20px;
+  width: 90%;
+  float: right;
+  text-align: right;
+}
 
+.Home-chart{
+  width: 90%;
+  height: 90%;
+  padding-top: 30px;
+}
+
+/* Appointments Page */
+
+.Appt-body{
+  height: 700px;
+}
+
+.Appt-scheduler{
+  width: 90%;
+  height: 90%;
+  padding-top: 30px;
+}
+
+/* had to use important to override theme*/
+
+.Cell-highlightedText-46{
+  color: var(--main) !important;
+}
+
+.makeStyles-appointment-96 {
+  background-color: var(--main-light) !important;
+}
+
+.makeStyles-appointment-91 {
+  background-color: var(--main-light) !important;
+}
 
 /* Sign In Page */
 
 .Sign-in{
   display:flex;
+  width: 100%;
 }
 .Sign-in-page
 {
-  height: 800px;
+  height: 600px;
   width: 60%;
+  margin-left: 20%;
   line-height: 3;
-  background-color: var(--second);
-  color: var(--white);
+  background-color: white;
+  color: var(--main-light);
+  display: inline-block;
+  text-align: center;
 
 }
 
 .Sign-in-page-text{
   width: 50%;
-  padding-top: 200px;
-  padding-left: 15%;
+  padding-top: 100px;
+  padding-left: 25%;
+  text-decoration: none;
+  margin: 0;
 }
 
 .Sign-in-header{
@@ -312,8 +345,41 @@ html,body
   font-size: 4vw;
 }
 
+.Sign-in-page a{
+  color: var(--second);
+}
+
+
 /* Sign Up Page */
 
 .Sign-up-page{
   padding-top: 40vh;
+}
+
+/* About Us */
+
+.Bottom-bar{
+  background-color: var(--main);
+  background-size: 100% 100%;
+  border: none;
+  outline: none;
+  height: 60px;
+  overflow: hidden;
+  width: 100%;
+  z-index: 10;
+  display: inline-flex;
+  justify-content: center;
+  line-height: 2;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.Bottom-link{
+  text-decoration: none;
+  color: white;
+}
+
+.Bottom-bar span{
+  margin: 0 10px;
 }

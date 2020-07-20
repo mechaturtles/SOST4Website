@@ -9,11 +9,6 @@ import * as ROUTES from '../../constants/routes';
  
 const SignInPage = () => (
   <div className = "Sign-in">
-    <div className = "Sign-in-extra">
-      <h1 className = "Sign-in-extra-text">
-        Slogan or something idk
-      </h1>
-    </div>
     <div className = "Sign-in-page">
       <div className = "Sign-in-page-text">
         <header className = "Sign-in-header">Sign In</header>

@@ -9,6 +9,7 @@ import { Animation } from '@devexpress/dx-react-chart';
 import GivenData from '../../constants/testingData.json';
 import moment from 'moment';
 import { AuthUserContext, withAuthorization } from '../Session';
+import firebase from 'firebase/app';
 
 var time = GivenData.events.map(function(e) {
   return e.systemTime;
@@ -16,7 +17,7 @@ var time = GivenData.events.map(function(e) {
 var values = GivenData.events.map(function(e) {
   return e.value;
 });
-var coords = time.sort().map( (v,i) => ({ systemTime: moment(v).format("hh:mm:ss a"), values: values.sort()[i] }) );
+var coords = time.sort().map( (v,i) => ({ systemTime: moment(v).format("hh:mm a"), values: values.sort()[i] }) );
 
 class HomePage extends Component {
   constructor(props) {
@@ -29,30 +30,38 @@ class HomePage extends Component {
   
   render() {
     const { data: chartData } = this.state;
-
+    console.log(firebase.auth().currentUser);
     return (
       <AuthUserContext.Consumer>
         {authUser => (
         <div className = "Home">
-          <div className = "Home-header"> <header className = "Home-header-text"> Welcome {authUser.name}! </header></div>
-          <div className = "Home-body"><div className = "Home-chart"><Chart
-            data={chartData}
-          >
-
-            <ArgumentAxis />
-            <ValueAxis />
-            
-            <LineSeries
-              name="Health Stats"
-              valueField="values"
-              argumentField="systemTime"
-              //hard coded for now; using style sheets later
-              color="#15A7DB"
-            />
-
-            <Animation />
-          </Chart>
+          <div className = "Home-header"> <header className = "Home-header-text"> Welcome, {firebase.auth().currentUser.providerData[0].email}! </header><br/>
           </div>
+          <div className = "Home-sub"> <header className = "Home-sub-text"> Your dashboard for today: </header><br/>
+          </div>
+          <div className = "Home-body">
+    
+            <div className = "Body-elements">
+              <div className = "Home-chart-header">
+                last hour
+              </div>
+              <div className = "Home-chart">
+                <Chart
+                data={chartData}>
+                  <ArgumentAxis />
+                  <ValueAxis/>
+                  
+                  <LineSeries
+                    name="Health Stats"
+                    valueField="values"
+                    argumentField="systemTime"
+                    color="#004f04"
+                  />
+
+                  <Animation />
+                </Chart>
+              </div>
+            </div>
           </div>
         </div>)}
       </AuthUserContext.Consumer>
