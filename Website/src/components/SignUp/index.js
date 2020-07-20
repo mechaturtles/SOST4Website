@@ -7,14 +7,19 @@ import * as ROUTES from '../../constants/routes';
 
 
 const SignUpPage = () => (
-  <div>
+  <div className = "Sign-in">
+    <div className = "Sign-in-page">
+      <div className = "Sign-in-page-text">
     <h1>SignUp</h1>
     <SignUpForm />
+    </div>
+  </div>
   </div>
 );
 
 const INITIAL_STATE = {
-    username: '',
+    firstName: '',
+    lastName: '',
     email: '',
     passwordOne: '',
     passwordTwo: '',
@@ -30,7 +35,7 @@ class SignUpFormBase extends Component {
 
   // Routes to Home after successful submission
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { firstName, lastName, email, passwordOne } = this.state;
  
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -38,8 +43,10 @@ class SignUpFormBase extends Component {
         // Create a user in your Firebase realtime database
         return this.props.firebase
           .user(authUser.user.uid)
+          .updateProfile({displayName: firstName})
           .set({
-            username,
+            firstName,
+            lastName,
             email,
           });
       })
@@ -60,7 +67,8 @@ class SignUpFormBase extends Component {
  
   render() {
     const {
-        username,
+        firstName,
+        lastName,
         email,
         passwordOne,
         passwordTwo,
@@ -71,16 +79,24 @@ class SignUpFormBase extends Component {
     passwordOne !== passwordTwo ||
     passwordOne === '' ||
     email === '' ||
-    username === '';
+    firstName === '' ||
+    lastName === '';
 
     return (
       <form onSubmit={this.onSubmit}>
         <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
+          name="firstName"
           type="text"
-          placeholder="Full Name"
+          value = {firstName}
+          onChange={this.onChange}
+          placeholder={"First Name"}
+        />
+       <input
+          name="lastName"
+          type="text"
+          value = {lastName}
+          onChange={this.onChange}
+          placeholder={"Last Name"}
         />
         <input
           name="email"
@@ -103,6 +119,7 @@ class SignUpFormBase extends Component {
           type="password"
           placeholder="Confirm Password"
         />
+        <br />
         <button disabled={isInvalid} type="submit">Sign Up</button>
  
         {error && <p>{error.message}</p>}
@@ -112,7 +129,7 @@ class SignUpFormBase extends Component {
 }
  
 const SignUpLink = () => (
-  <p>
+  <p className = "Sign-in-sign-up">
     Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
 );
