@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../index.css';
-import logo from '../../images/Logo.png';
 
 import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
@@ -9,7 +7,7 @@ import * as ROUTES from '../../constants/routes';
 import { AuthUserContext } from '../Session';
  
 const Navigation = () => (
-  <div className = "no-margin">
+  <div>
     <AuthUserContext.Consumer>
       {authUser =>
         authUser ? <NavigationAuth /> : <NavigationNonAuth />
@@ -20,22 +18,34 @@ const Navigation = () => (
 
 //Admin should be hidden for non-admin roles
 const NavigationAuth = () => (
-  <ul className = "Top-bar"> 
-          <li className = "Top-logo"> <Link to={ROUTES.HOME} className = "Top-link"> <img src = {logo} alt="My Health Radar" className = "Top-logo-image"></img> </Link> </li>
-          <SignOutButton />
-          <li className = "Top-options"> <Link to={ROUTES.ACCOUNT} className = "Top-link"> Profile </Link> </li>
-          <li className = "Top-options"> <Link to={ROUTES.ADMIN} className = "Top-link"> Past Data </Link> </li>
-          <li className = "Top-options"> <Link to={ROUTES.HOME} className = "Top-link"> Contact Provider </Link> </li>
-          <li className = "Top-options"> <Link to={ROUTES.APPOINTMENTS} className = "Top-link"> Appointments </Link> </li>
-          <li className = "Top-options"> <Link to={ROUTES.HOME} className = "Top-link"> Home </Link> </li>
+  <ul>
+    <li>
+      <Link to={ROUTES.LANDING}>Landing</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.HOME}>Home</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.ACCOUNT}>Account</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.ADMIN}>Admin</Link>
+    </li>
+    <li>
+      <SignOutButton />
+    </li>
   </ul>
 );
 
 const NavigationNonAuth = () => (
-  <div className = "Top-bar"> 
-          <li className = "Top-logo"> <Link to={ROUTES.LANDING} className = "Top-link"> <img src = {logo} alt="My Health Radar" className = "Top-logo-image"></img> </Link> </li>
-          <li className = "Top-options"> <Link to={ROUTES.HOME} className = "Top-link"> Sign In </Link> </li>
-  </div>
+  <ul>
+    <li>
+      <Link to={ROUTES.LANDING}>Landing</Link>
+    </li>
+    <li>
+      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+    </li>
+  </ul>
 );
  
 export default Navigation;

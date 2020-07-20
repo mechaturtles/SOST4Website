@@ -1,7 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
-require('dotenv').config();
 
 //Keys are stored in a .env file, so adding one is recommended over changing the following.
 const config = {
