@@ -3,7 +3,8 @@ import React from 'react';
 import { AuthUserContext, withAuthorization } from '../Session';
 import { PasswordForgetForm } from '../PasswordForget';
 import PasswordChangeForm from '../PasswordChange';
- 
+import ServiceManagerPage from '../ServiceManager';
+
 const AccountPage = () => (
   <AuthUserContext.Consumer>
     {authUser => (
@@ -11,6 +12,7 @@ const AccountPage = () => (
         <h1>Account: {authUser.email}</h1>
         <PasswordForgetForm />
         <PasswordChangeForm />
+        <ServiceManagerPage />
       </div>
     )}
   </AuthUserContext.Consumer>

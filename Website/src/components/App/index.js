@@ -11,6 +11,7 @@ import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import AppointmentsPage from '../Appoinments';
 import AboutUs from '../AboutUs';
+import OAuth from '../OAuth';
  
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
@@ -31,6 +32,8 @@ const App = () => (
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.APPOINTMENTS} component={AppointmentsPage} />
+      <Route path={ROUTES.OAUTH} component={OAuth} />
+
       <AboutUs />
     </div>
   </Router>
