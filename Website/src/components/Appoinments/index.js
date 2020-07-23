@@ -24,11 +24,11 @@ class AppointmentsPage extends Component {
       <AuthUserContext.Consumer>
         {authUser => (
         //Similar formatting to Home page
-        <div className = "Home">
-          <div className = "Home-header"> <header className = "Home-header-text"> Upcoming Appointments </header><br/>
+        <div className = "Home Shrink">
+          <div className = "Home-header Appt-header Shrink"> <header className = "Home-header-text Shrink"> Upcoming Appointments </header><br/>
           </div>
-          <div className = "Home-body Appt-body">
-            <div className = "Body-elements">
+          <div className = "Home-body Appt-body Shrink">
+            <div className = "Body-elements Body-elements-bigger">
               <div className = "Appt-scheduler">
                 <Scheduler
                 data={schedulerData}

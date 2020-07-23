@@ -10,13 +10,15 @@ import HomePage from '../Home';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
 import AppointmentsPage from '../Appoinments';
-import AboutUs from '../AboutUs';
- 
+import BottomBar from '../BottomBar';
+import ScrollToTop from './scrollToTop';
+
 import * as ROUTES from '../../constants/routes';
 import { withAuthentication } from '../Session';
  
 const App = () => (
   <Router>
+    <ScrollToTop>
     <div>
       <Navigation />
  
@@ -31,8 +33,9 @@ const App = () => (
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.ADMIN} component={AdminPage} />
       <Route path={ROUTES.APPOINTMENTS} component={AppointmentsPage} />
-      <AboutUs />
+      <BottomBar />
     </div>
+    </ScrollToTop>
   </Router>
 );
  

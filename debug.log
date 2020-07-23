@@ -1,0 +1,2 @@
+[0722/091229.869:ERROR:file_io.cc(89)] ReadExactly: expected 36, observed 0
+[0723/064834.552:ERROR:settings.cc(320)] Settings magic is not 1129342067
