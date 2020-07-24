@@ -1,4 +1,4 @@
-# SOST4Website
+# Heart Rate
 The functions in this folder analyze heart rate data.  
 
 In the Simple Heart Rate Functions, there are functions to analyze basic details of the heart rate data such as when it is below or above a baseline. In the Spectral Analysis, the code will do the calculations for a spectral analysis of the given heartrate. 
