@@ -5,7 +5,9 @@ In the Simple Heart Rate Functions, there are functions to analyze basic details
 
 Credits:
 
+Dataset:
 Gent, Paul van. “Analyzing a Discrete Heart Rate Signal Using Python – Part 1.” Paulvangentcom, 15 Mar. 2016, www.paulvangent.com/2016/03/15/analyzing-a-discrete-heart-rate-signal-using-python-part-1/.
 
+Theory: 
 Li, Kai, et al. “Spectral Analysis of Heart Rate Variability: Time Window Matters.” Frontiers, Frontiers, 7 May 2019, www.frontiersin.org/articles/10.3389/fneur.2019.00545/full.
 
