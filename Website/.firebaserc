@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "sosth4"
+    "default": "sosth4",
+    "main": "sosth4"
   }
 }

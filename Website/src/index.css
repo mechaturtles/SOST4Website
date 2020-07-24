@@ -27,6 +27,31 @@ html,body
   --off-white: #eeeeee;
 }
 
+/* Animation */
+
+@keyframes text-move-in {
+  from {padding-right: 10px; opacity: 0;}
+  to {padding-right: 0px; opacity: 1;}
+}
+
+@keyframes body-element-move-in {
+  from { margin-top: 50px; opacity: 0;}
+  to { margin-top: 0; opacity: 1;}
+}
+
+@keyframes turn-up {
+  from { transform: rotate(90deg);}
+  to { transform: rotate(45deg);}
+}
+
+@keyframes heart-beat {
+  0%{width: 90%; height: 90%; margin-left: 5%; margin-top: 5%;}
+  
+  25%{width: 100%; height: 100%; margin-left: 0%; margin-top: 0%;}
+  
+  100%{width: 90%; height: 90%; margin-left: 5%; margin-top: 5%;}
+}
+
 /*  Navigation bar */
 
 .Top-bar{
@@ -50,6 +75,7 @@ html,body
   font-size: 20px;
   line-height: 3.8;
   text-indent: 10px;
+  opacity: 0;
   animation: text-move-in .25s ease-in;
   animation-fill-mode: forwards;
   font-weight: bold;
@@ -58,11 +84,6 @@ html,body
 .Top-logo{
   float: left;
   font-size-adjust: inherit;
-}
-
-@keyframes text-move-in {
-  from {padding-right: 10px; opacity: 0;}
-  to {padding-right: 0px; opacity: 1;}
 }
 
 .Top-link {
@@ -207,7 +228,6 @@ html,body
   background-color: var(--off-white);
   color: var(--main);
 }
-
 .Home-header-text{
   padding-left: 25px;
   padding-top: 45px;
@@ -232,43 +252,296 @@ html,body
 }
 
 .Home-body{
-  padding-top: 40px;
-  width: 100vw;
-  height: 1200px;
+  padding-top: 5px;
+  height: 1450px;
   background-color: var(--off-white);
   color: var(--second);
+}
+
+.Home-body-lite{
+  height: 1425px;
+}
+
+.Home-body-line{
+  margin-top: 20px;
+  width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.Body-top-element{
+  border-radius: 30px;
+  background-color: white;
+  width: 1625px;
+  height: 200px;
+  margin-right: 5px;
+  margin-left: 5px;
+  display: -webkit-box;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: body-element-move-in .25s ease-in;
+  animation-fill-mode: forwards;
 }
 
 .Body-elements{
   border-radius: 30px;
   background-color: white;
-  width: 90vw;
-  height: 600px;
+  width: 1050px;
+  height: 350px;
+  margin-right: 10px;
+  margin-left: 10px;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  opacity: 0;
+  animation: body-element-move-in .25s ease-in .25s;
+  animation-fill-mode: forwards;
+}
+
+.Body-elements-bigger{
+  margin-left: 60px;
+  width: 1560px;
+  height: 700px;
+}
+
+.Body-elements-patient{
+  width: 1300px;
+  height: 200px
+}
+
+.Body-element-smaller{
+  width: 500px; 
+  animation: body-element-move-in .25s ease-in .5s;
+  animation-fill-mode: forwards;
+}
+
+.Body-top-block{
+  width: 20.5%;
+  margin-left: 1.25%;
+  margin-right: 1.25%;
+  align-items: center;
+  justify-content: center;
+  vertical-align: center;
+}
+
+.Body-top-block-icon{
+  margin-right: 0%;
+}
+
+.Body-top-text{
+  margin-top: 50px;
+  font-size: 23px;
+  white-space: break-spaces;
+  text-align: left;
+}
+
+.Body-short-text{
+  width: 17.5%;
+  margin-right: 0;
+}
+
+.Home-icon-image{
+  width: 200px;
+  height: 200px;
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+@media screen and (min-width: 1200px) {
+  .Home-icon-image{
+    width: 200px;
+    height: 200px;
+    margin-left: 17.5%;
+    margin-top: 0;
+  }
 }
 
 .Home-chart-header{
   color: var(--second-light);
   padding-top: 20px;
-  width: 90%;
+  height: 5%;
+  width: 45%;
   float: right;
   text-align: right;
 }
 
+.Home-chart-header-2{
+  float: left;
+  text-align: left;
+}
+
 .Home-chart{
   width: 90%;
-  height: 90%;
+  height: 80%;
+  top: -10px;
+  position: relative;
   padding-top: 30px;
+}
+
+/* !important necessary to overwrite default chart height */
+
+.Component-root-1{
+  height: 100% !important;
+}
+
+.Home-table-header{
+ padding-top: 20px;
+ padding-bottom: 10px;
+ margin: 0px;
+ height: 10%;
+ width: 100%;
+ text-align: center;
+ font-weight: bold;
+ color: var(--second-light);
+}
+
+table{
+  width: 90%;
+  height: 80%;
+}
+
+tr{
+  margin: 0;
+  width: 100%;
+  height: 30%;
+  text-align: left;
+  background-color: var(--off-white);
+  border-radius: 6px;
+  color: var(--second);
+}
+
+td{
+  font-family: 'Roboto', sans-serif;
+}
+
+.Home-table-values{
+  font-size: 50px;
+  padding-right: 0%;
+  text-align: center;
+  width: 55%;
+  color: var(--second);
+}
+
+.Home-table-text-time{
+  width: 30%;
+  padding-right: 5%;
+  padding-top: 10px;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  color: var(--second-light);
+  font-weight: bold;
+}
+
+.Home-table-text-time-less-pad{
+  padding-bottom: 20px;
+}
+
+hr {
+  border-color: var(--main);
+  width: 30%;
+  z-index: 1;
+  margin-top: 2.5px;
+  margin-bottom: 5px;
+}
+
+.Home-table-text{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Home-table-white-cell{
+  background-color: white;
+}
+
+tbody{
+  margin: 0;
+}
+
+.Home-dex{
+  width: 250px;
+  height: 250px;
+  margin: 0;
+}
+
+.Home-dex-image{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  bottom: 20px;
+  transform: rotate(90deg);
+  animation: turn-up .25s ease-in 1s;
+  animation-fill-mode: forwards;
+}
+
+.Home-dex-image-text {
+  height: 0;
+  right: 170px;
+  top: 72.5px;
+  position: relative;
+  font-size: 28px;
+  z-index: 3;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  margin: 0px;
+  width: 0;
+}
+
+.Home-dex-sub{
+  display: flex;
+  position: relative;
+  bottom: 20px;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  justify-content: center;
+  font-weight: normal;
+}
+
+.Home-heart{
+    height: 200px;
+    width: 200px;
+    margin: 0px;
+}
+
+.Home-heart-image{
+  width: 60%;
+  height: 60%;
+  position: relative;
+  bottom: 10px;
+  margin-left: 20%;
+  animation: heart-beat 1s ease-in 1s infinite;
+}
+
+.Home-heart-text{
+  font-size: 30px;
+  position: relative;
+  right: 143.25px;
+  top: 62.5px;
+}
+
+.Home-heart-sub{
+  bottom: 0px;
+}
+
+.Home-provider-click{
+  margin-top: 0;
+  transition: margin-top 0.5s;
+}
+
+.Home-provider-click:hover{
+  margin-top: 50px;
 }
 
 /* Appointments Page */
 
+.Appt-header{
+  padding-bottom: 60px;
+}
+
 .Appt-body{
-  height: 700px;
+  height: 800px;
 }
 
 .Appt-scheduler{
@@ -296,24 +569,27 @@ html,body
 .Sign-in{
   display:flex;
   width: 100%;
+  padding-top: 60px;
+  justify-content: center;
 }
 .Sign-in-page
 {
-  height: 600px;
-  width: 60%;
-  margin-left: 20%;
+  height: 750px;
+  width: 100%;
   line-height: 3;
-  background-color: white;
+  background-color: var(--off-white);
   color: var(--main-light);
-  display: inline-block;
+  display: flex;
   text-align: center;
+  justify-content: center;
+  align-items: center;
 
 }
 
 .Sign-in-page-text{
-  width: 50%;
-  padding-top: 100px;
-  padding-left: 25%;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 100px;
   text-decoration: none;
   margin: 0;
 }
@@ -330,25 +606,30 @@ html,body
   padding-left: 2px;
 }
 
-.Sign-in-extra{
-  height: 600px;
-  width: 40%;
-  justify-content: center;
-  display: flex;
-}
-.Sign-in-extra-text{
-  margin: 0px;
-  width: 50%;
-  padding-top: 255px;
-  padding-right: 60px;
-  color: var(--second);
-  font-size: 4vw;
-}
-
-.Sign-in-page a{
-  color: var(--second);
+.Sign-in-button{
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  width: 300px;
+  height: 400px;
+  flex-wrap: wrap;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--second-light);
+  opacity: 0;
+  margin-top: 50px;
+  animation: body-element-move-in .25s ease-in .25s;
+  animation-fill-mode: forwards;
 }
 
+.Sign-in-icon{
+  width: 70%;
+  height: 50%;
+  z-index: 3;
+}
+
+.Sign-in-button-text{
+  color: var(--off-white);
+}
 
 /* Sign Up Page */
 
@@ -382,4 +663,15 @@ html,body
 
 .Bottom-bar span{
   margin: 0 10px;
+}
+
+
+/* Shrink */
+@media screen and (max-width: 1110px) {
+  .Shrink{
+    width: 1110px;
+  }
+  .Home-header{
+    font-size: 30px;
+  }
 }

@@ -2,27 +2,25 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
  
-import { SignUpLink } from '../SignUp';
-import { PasswordForgetLink } from '../PasswordForget';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
+import * as ROLES from '../../constants/roles';
+
+import iconboy from '../../images/iconboy2.png';
  
 const SignInPage = () => (
-  <div className = "Sign-in">
+  <div className = "Sign-in Shrink">
     <div className = "Sign-in-page">
       <div className = "Sign-in-page-text">
         <header className = "Sign-in-header">Sign In</header>
         <SignInForm />
-        <PasswordForgetLink />
-        <SignUpLink />
       </div>
     </div>
   </div>
 );
  
 const INITIAL_STATE = {
-  email: '',
-  password: '',
+  role: '',
   error: null,
 };
  
@@ -34,7 +32,19 @@ class SignInFormBase extends Component {
   }
  
   onSubmit = event => {
-    const { email, password } = this.state;
+    const { role } = this.state;
+    
+    var {email, password} = '';
+
+    if (role == [ROLES.Provider]){
+      //provider account
+      email = "dan@test.com";
+      password = "testing";
+    } else {
+      //patient account
+      email = "dan@test2.com";
+      password = "testing";
+    }
  
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
@@ -50,37 +60,21 @@ class SignInFormBase extends Component {
   };
  
   onChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ role: event.currentTarget.value });
   };
  
   render() {
-    const { email, password, error } = this.state;
- 
-    const isInvalid = password === '' || email === '';
  
     return (
       <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <br />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <br />
-        <button disabled={isInvalid} type="submit">
-          Sign In
+        <button className = "Sign-in-button" style={{backgroundColor: "var(--main-light)"}} type="submit" value={[ROLES.Provider]} onClick={this.onChange}>
+          <img className = "Sign-in-icon" src = {iconboy} alt = ''></img>
+          <h1 className = "Sign-in-button-text">Sign In As Provider</h1>
         </button>
-        
-        {error && <p>{error.message}</p>}
+        <button className = "Sign-in-button" type="submit" value={[ROLES.Patient]} onClick={this.onChange}>
+          <img className = "Sign-in-icon" src = {iconboy} alt = ''></img>
+          <h1 className = "Sign-in-button-text">Sign In As Patient</h1>
+        </button>
       </form>
     );
   }

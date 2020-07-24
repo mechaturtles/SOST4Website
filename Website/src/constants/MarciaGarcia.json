@@ -1,0 +1,83 @@
+{
+  "generalInfo": [
+    {
+      "provider": "John Johnston",
+      "network": "TechPoint Health",
+      "weight": 120,
+      "height": 80,
+      "bmi": 23
+    }
+  ],
+  "glucose": [
+    {
+      "systemTime": "2020-07-09T18:16:54",
+      "value": 140
+    },
+    {
+      "systemTime": "2020-07-09T18:17:54",
+      "value": 142
+    },
+    {
+      "systemTime": "2020-07-09T18:18:54",
+      "value": 138
+    },
+    {
+      "systemTime": "2020-07-09T18:19:54",
+      "value": 200
+    }
+  ],
+  "heartRate": [
+    {
+      "systemTime": "2020-07-09T18:16:54",
+      "value": 70
+    },
+    {
+      "systemTime": "2020-07-09T18:21:54",
+      "value": 75
+    },
+    {
+      "systemTime": "2020-07-09T18:26:54",
+      "value": 50
+    },
+    {
+      "systemTime": "2020-07-09T18:31:54",
+      "value": 45
+    }
+  ],
+  "bloodPressure": [
+    {
+      "systemTime": "2020-07-09T18:16:54",
+      "systolic": 120,
+      "diastolic": 80
+    },
+    {
+      "systemTime": "2020-07-10T18:21:54",
+      "systolic": 120,
+      "diastolic": 80
+    },
+    {
+      "systemTime": "2020-07-11T18:26:54",
+      "systolic": 120,
+      "diastolic": 80
+    },
+    {
+      "systemTime": "2020-07-12T18:31:54",
+      "systolic": 180,
+      "diastolic": 90
+    }
+  ],
+  "basicInfo": [
+    {
+      "firstName": "Marcia",
+      "lastName": "Garcia",
+      "dob": "01/01/2004"
+    }
+  ],
+  "insights": [
+    {
+      "glucose": "good",
+      "heartRate": "good",
+      "bloodPressure": "good"
+    }
+  ]
+}
