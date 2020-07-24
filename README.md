@@ -7,8 +7,14 @@ We also strive to offer providers analytical tools to properly evaluate patient 
 
 You can checkout our project at [sosth4.web.app](https://sosth4.web.app/) although it will eventually be taken down.
 
-# Navigating the project
+## Navigating the project
 
+The **Website** folder contains the node project for the myHealthRadar website. A .env file will be required and an example is included in the folder. Note that you will need to add an example users' credentials as we do an automatic login for demo purposes.
+Run `npm install` and `npm start`in the directory to run. 
+
+The **HealthAnalytics** folder contains Python functions (as a .ipynb or .py) that would have been used to notify patients and providers for certain health events as well as to process health data to generate a report. Each folder has a readme and citations to explain what is going on.
+
+The **Backend** folder contains an intialized project for Cloud Functions, but should be disregarded.
 
 ## Packages used
 
