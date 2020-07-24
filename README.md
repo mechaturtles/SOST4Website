@@ -7,6 +7,6 @@ Recompose
 Material-UI
 DX React Chart
 
-#Sources
+# Sources
 [Robin Wieruch's Firebase Authentication for React Tutorial](https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial)
 
