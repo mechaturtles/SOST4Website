@@ -1,4 +1,10 @@
 # Created by Deepa Jayasankar
+# inputs
+heartRate = [[59,2],[60,24],[52,36],[105,40],[52,54],[58,59]] #heart rates in one 2D array
+average = 64 #average heart rate
+lowRate = 40 #low heart rate
+highRate = 100 #high heart rate
+
 # functions
 def highHR(heartRate, highRate):
   size = len(heartRate)
@@ -39,11 +45,3 @@ def constantLowHR(average, lowRate):
     return("Heart rate is on average low.")
   else:
     return("The heart rate is not low on average.")
-
-def meanGlucose(glucoseData):
-  size = len(glucoseData)
-  sum = 0
-  for i in range(size):
-    sum = sum + glucoseData[i][0]
-  average = sum / size
-  return "The glucose levels average is %d mg/dL" % average
