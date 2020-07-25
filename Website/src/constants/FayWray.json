@@ -75,9 +75,9 @@
   ],
   "insights": [
     {
-      "glucose": "good",
-      "heartRate": "good",
-      "bloodPressure": "good"
+      "glucose": "Healthy",
+      "heartRate": "Healthy",
+      "bloodPressure": "Unhealthy"
     }
   ]
 }

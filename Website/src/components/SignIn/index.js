@@ -38,14 +38,16 @@ class SignInFormBase extends Component {
 
     if (role == [ROLES.Provider]){
       //provider account
-      email = "dan@test.com";
+      email = "john@provider.com";
       password = "testing";
     } else {
       //patient account
-      email = "dan@test2.com";
+      email = "billy@techpoint.com";
       password = "testing";
     }
  
+    console.log(email);
+    console.log(password);
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(() => {

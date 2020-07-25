@@ -14,8 +14,8 @@ import { AuthUserContext, withAuthorization } from '../Session';
 
 const currentDate = moment().format("YYYY-MM-DD");
 const schedulerData = [
-  { startDate: '2020-07-20T09:45', endDate: '2020-07-20T11:00', title: 'Weekly Checkup' },
-  { startDate: '2020-07-23T12:00', endDate: '2020-07-23T13:30', title: 'Special Appointment' },
+  { startDate: '2020-07-20T09:45', endDate: '2020-07-20T11:00', recurrenceRule: 'FREQ=WEEKLY; UNTIL=20210720', title: 'Weekly Checkup' },
+  { startDate: '2020-07-24T12:00', endDate: '2020-07-24T13:30', recurrenceRule: 'FREQ=WEEKLY; UNTIL=20210723', title: 'Special Appointment' },
 ];
 
 class AppointmentsPage extends Component {
@@ -28,7 +28,7 @@ class AppointmentsPage extends Component {
           <div className = "Home-header Appt-header Shrink"> <header className = "Home-header-text Shrink"> Upcoming Appointments </header><br/>
           </div>
           <div className = "Home-body Appt-body Shrink">
-            <div className = "Body-elements Body-elements-bigger">
+            <div className = "Body-elements Body-elements-appt">
               <div className = "Appt-scheduler">
                 <Scheduler
                 data={schedulerData}
@@ -37,14 +37,15 @@ class AppointmentsPage extends Component {
                     currentDate={currentDate}
                     color="white"
                   />
-                  <DayView
-                    startDayHour={9}
-                    endDayHour={14}
-                  />
                   <WeekView
                     startDayHour={10}
                     endDayHour={19}
                   />
+                  <DayView
+                    startDayHour={9}
+                    endDayHour={14}
+                  />
+  
                   <Toolbar />
                   <DateNavigator />
                   <ViewSwitcher />

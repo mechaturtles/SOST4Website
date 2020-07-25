@@ -4,5 +4,6 @@ export const SIGN_IN = '/signin';
 export const HOME = '/home';
 export const ACCOUNT = '/account';
 export const ADMIN = '/admin';
+export const ABOUTUS = '/about-us';
 export const PASSWORD_FORGET = '/pw-forget';
 export const APPOINTMENTS = '/appointments';

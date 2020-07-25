@@ -12,6 +12,7 @@ import JackData from '../../constants/JackBlack.json';
 import MarciaData from '../../constants/MarciaGarcia.json';
 import MaryData from '../../constants/MarySmith.json';
 import SallyData from '../../constants/SallyWalker.json';
+import ScrollToTop from '../App/scrollToTop';
 import moment from 'moment';
 import { AuthUserContext, withAuthorization } from '../Session';
 import firebase from 'firebase/app';
@@ -39,11 +40,6 @@ class HomePage extends Component {
 
 
 
-
-
-
-
-
 /* Patient Page */
 
     /* Top Bar */
@@ -51,7 +47,8 @@ class HomePage extends Component {
     class TopBar extends Component{
       
       render(){
-        return(<div className = "Body-top-element Home-provider-click">
+        return(
+        <div className = "no-margin Body-top-anti-div">
           <div className = "Body-top-block Body-top-block-icon">
             <img className = "Home-icon-image" src = {iconboy} alt = ''></img>
           </div>
@@ -91,21 +88,30 @@ class HomePage extends Component {
       componentDidMount() {
         var userId = firebase.auth().currentUser.uid;
         var comp = this;
+        console.log(userId);
 
         firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-          comp.setState({name: snapshot.val().firstName || ''})});
+          console.log(snapshot.val());
+            if (snapshot.val()){
+                comp.setState({name: snapshot.val().firstName || ''})
+              }
+            }
+          );
       }
 
       render() {
+        //name hardcoded to ignore any errors
         return (
           <div className = "Home Shrink">
-          <div className = "Home-header Shrink"> <header className = "Home-header-text Shrink"> Welcome, {this.state.name}! </header><br/>
+          <div className = "Home-header Shrink"> <header className = "Home-header-text Shrink"> Welcome, Billy! </header><br/>
           </div>
           <div className = "Home-sub Shrink"> <header className = "Home-sub-text Shrink"> Your dashboard for today: </header><br/>
           </div>
           <div className = "Home-body Shrink">
             <div className = "Home-body-line">
-              <TopBar dataSet={BillyData}/>
+              <div className = "Body-top-element">
+               <TopBar dataSet={BillyData}/>
+              </div>
             </div>
               <div className = "Home-body-line">
                 <BloodSugarChart dataSet={BillyData}/>
@@ -299,14 +305,14 @@ class HomePage extends Component {
                   name="Systolic"
                   valueField="sys"
                   argumentField="systemTime"
-                  color="red"
+                  color="#C03221"
                 />
 
                 <SplineSeries
                   name="Diastolic"
                   valueField="dia"
                   argumentField="systemTime"
-                  color="blue"
+                  color="#819CA9"
                 />
 
                 <Animation />
@@ -377,7 +383,7 @@ class HomePage extends Component {
                   name="Health Stats"
                   valueField="hr"
                   argumentField="systemTime"
-                  color="#004f04"
+                  color="#29434e"
                 />
 
                 <Animation />
@@ -397,6 +403,21 @@ class HomePage extends Component {
       </div>
     );
 
+    class HealthInsights extends Component{
+      render(){
+      return(
+      <div className = "no-margin Body-top-anti-div">
+          <div className = "Home-insights-block">
+            <div className = "Home-insights-text">
+              <span style={{marginLeft: '30px', marginRight: '30px'}}>Glucose: <span style={{fontWeight: 'bold', color: '#60ac5d'}}>{this.props.dataSet.insights[0].glucose}</span></span><br/>
+              <span style={{marginLeft: '30px', marginRight: '30px'}}>Heart Rate: <span style={{fontWeight: 'bold', color: '#60ac5d'}}>{this.props.dataSet.insights[0].heartRate}</span></span><br/>
+              <span style={{marginLeft: '30px', marginRight: '30px'}}>Blood Pressure: <span style={{fontWeight: 'bold', color: '#C03221'}}>{this.props.dataSet.insights[0].bloodPressure}</span></span><br/>
+            </div>
+          </div>
+        </div>
+        )
+      }
+    }
 
 
 
@@ -413,14 +434,26 @@ class HomePage extends Component {
 
 /* Provider Page */
 
+
     class HomeProvider extends Component{
-        state = {
-          ViewPatient: false,
-        }
+      constructor() {
+        super();
+        this.state = { ViewPatient: false, Patient: [] };
+      }
+
+      triggerAddTripState = (dataSet) => {
+        console.log(dataSet);
+        this.setState({
+          ...this.state,
+          Patient: dataSet,
+          ViewPatient: !this.state.ViewPatient
+          })
+      }
+
 
       render(){
         return(
-          this.state.ViewPatient ? null : <MainPage />
+          this.state.ViewPatient ? <PatientPage addTrip = {this.triggerAddTripState} dataSet = {this.state.Patient}/> : <MainPage addTrip = {this.triggerAddTripState} />
         );    
       }
     };
@@ -428,83 +461,104 @@ class HomePage extends Component {
     class MainPage extends Component{ 
       constructor() {
         super();
-        this.state = { name: 'User' };
+        this.state = { name: '' };
       }
 
       componentDidMount() {
         var userId = firebase.auth().currentUser.uid;
         var comp = this;
 
-        firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
-          comp.setState({name: snapshot.val().firstName || 'User'})});
+       // firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+         // comp.setState({name: snapshot.val().firstName || 'User'})});
       }
 
       render(){
         return(
+        <ScrollToTop>
         <div className = "Home Shrink">
           <div className = "Home-header Shrink"> 
-            <header className = "Home-header-text Shrink"> Welcome, {this.state.name}! </header><br/>
+            <header className = "Home-header-text Shrink"> Welcome, John! </header><br/>
           </div>
           <div className = "Home-sub Shrink"> <header className = "Home-sub-text Shrink"> Here's how your clients are doing today: </header><br/>
           </div>
-          <div className = "Home-body Home-body-lite Shrink">
+          <div className = "Home-body Home-body-ex-lite Shrink">
             <div className = "Home-body-line">
-              < TopBar dataSet={BillyData} className = "Home-provider-click"/>
+              <div className = "Body-top-element" onClick={() => this.props.addTrip(BillyData)}> 
+               < TopBar dataSet={BillyData} className = "Home-provider-click" />
+              </div>
             </div>
             <div className = "Home-body-line">
-              < TopBar dataSet={FayData} className = "Home-provider-click"/>
+              <div className = "Body-top-element" onClick={() => this.props.addTrip(FayData)}> 
+                < TopBar dataSet={FayData} className = "Home-provider-click"/>
+              </div>
             </div>
             <div className = "Home-body-line">
-              < TopBar dataSet={JackData}/>
+              <div className = "Body-top-element" onClick={() => this.props.addTrip(JackData)}> 
+                < TopBar dataSet={JackData}/>
+              </div>
             </div>
             <div className = "Home-body-line">
-              < TopBar dataSet={MarciaData}/>
+              <div className = "Body-top-element" onClick={() => this.props.addTrip(MarciaData)}> 
+                < TopBar dataSet={MarciaData}/>
+              </div>
             </div>
             <div className = "Home-body-line">
-              < TopBar dataSet={MaryData}/>
+              <div className = "Body-top-element" onClick={() => this.props.addTrip(MaryData)}> 
+                < TopBar dataSet={MaryData}/>
+              </div>
             </div>
             <div className = "Home-body-line">
-              < TopBar dataSet={SallyData}/>
+            <div className = "Body-top-element" onClick={() => this.props.addTrip(SallyData)}> 
+                < TopBar dataSet={SallyData}/>
+              </div>
             </div>
           </div>
         </div>
+        </ScrollToTop>
         )}
     };
 
     class PatientPage extends Component {
-      constructor() {
-        super();
-        this.state = { name: ''};
-      }
-
       componentDidMount() {
         var user = this.props.userData;
         var comp = this;
-
-        
       }
 
       render() {
         return (
+          <ScrollToTop>
           <div className = "Home Shrink">
-          <div className = "Home-body Shrink">
+          <div className = "Home-body Home-body-lil-big Shrink">
               <div className = "Home-body-line">
-                  <TopBar dataSet={BillyData}/>
+                <div className = "Home-top-button" onClick={() => this.props.addTrip([])}>
+                  <h1>Go Back</h1>
+                </div>
               </div>
               <div className = "Home-body-line">
-                <BloodSugarChart dataSet={BillyData}/>
-                <BloodSugarTable dataSet={BillyData}/>
+                  <div className = "Body-top-element">
+                    <TopBar dataSet={this.props.dataSet}/>
+                  </div>
+              </div>
+              <div className = "Home-body-line">
+                  <div className = "Body-top-element">
+                    <HealthInsights dataSet={this.props.dataSet}/>
+                  </div>
+              </div>
+              <div className = "Home-body-line">
+                <BloodSugarChart dataSet={this.props.dataSet}/>
+                <BloodSugarTable dataSet={this.props.dataSet}/>
               </div>  
               <div className = "Home-body-line">
-                <HeartRateChart dataSet={BillyData}/>
-                <HeartRateTable dataSet={BillyData}/>
+                <HeartRateChart dataSet={this.props.dataSet}/>
+                <HeartRateTable dataSet={this.props.dataSet}/>
               </div>
               <div className = "Home-body-line">
-                <BloodPressureChart dataSet={BillyData}/>
-                <BloodPressureTable dataSet={BillyData}/>
+                <BloodPressureChart dataSet={this.props.dataSet}/>
+                <BloodPressureTable dataSet={this.props.dataSet}/>
               </div>
           </div>
         </div>
+        </ScrollToTop>
         );
       }
     };

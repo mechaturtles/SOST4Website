@@ -24,6 +24,7 @@ html,body
   --second: #29434e;
   --main-light: #60ac5d;
   --second-light: #819ca9;
+  --second-lighter: #b8d7e4;
   --off-white: #eeeeee;
 }
 
@@ -37,6 +38,11 @@ html,body
 @keyframes body-element-move-in {
   from { margin-top: 50px; opacity: 0;}
   to { margin-top: 0; opacity: 1;}
+}
+
+@keyframes landing-move-in {
+  from {  margin-top: 10%; opacity: 0;}
+  to {  margin-top: 5%; opacity: 1;}
 }
 
 @keyframes turn-up {
@@ -136,80 +142,120 @@ html,body
 
 /*  Landing page */
 
+
+.Landing-body{
+  padding-top: 5px;
+  height: 1600px;
+  background-color: var(--off-white);
+  color: var(--second);
+}
+
 .Landing-top{
+  height: 40%;
   width: 100%;
-  height: 90vh;
-  background-image: url('images/OldCouple.png');
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
+  background-color: var(--second);
+  z-index: 0;
+  font-weight: bold;
 }
 
 .Landing-first-description{
-  height: 50vh;
+  height: 35%;
   width: 100%;
   background-color: var(--main-light);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  margin-top: 80vh;
-  z-index: 0;
+  z-index: 2;
 }
 
 .Landing-title{
-  height: 20vh;
-  width: 20vw;
-  right: 5vw;
+  height: 33%;
+  width: 90%;
+  margin-left: 5%;
+  right: 5%;
   z-index: 1;
-  font-size: 3vw;
+  font-size: 50px;
   color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
   text-align: left;
 }
 
 .Landing-text{
   margin-top:0px;
-  margin-left: 15vw;
-  height: 25vh;
-  width: 70vw;
-  right: 15vw;
-  text-align: center;
-  font-size: 2vw;
+  margin-left: 10%;
+  margin-left: 10%;
+  height: 66%;
+  width: 80%;
+  line-height: 2;
+  text-align: right;
+  font-size: 30px;
   display: flex;
   justify-content: center;
   color: white;
   z-index: 1;
 }
 
-@media screen and (max-width: 700px) {
-  .Landing-text{
-    font-size: 3vw;
-  }
-  .Landing-title{
-    font-size: 4vw;
-  }
-}
-
 .Landing-second-description{
   text-align: center;
-  margin-top: 20vh;
-  height: 80vh;
+  height: 25%;
   width: 100%;
   background: white;
 }
 
-.Landing-second{
-  padding-top: 20vh;
-}
-
 .Landing-second-text-color{
-  color: var(--main-light)
+  color: var(--main-light);
+  text-align: center;
 }
 
+.Landing-second{
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
 
+.Landing-images{
+  width: 425px;
+  height: 70px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Landing-images-fit{
+  width:60%;
+  height:100%;
+}
+
+.Landing-top-header{
+  width: 100%;
+  text-align: center;
+  margin-top: 5%;
+  height: 30%;
+  font-size: 60px;
+  z-index: 0;
+  color: var(--second-lighter);
+  opacity: 0;
+  animation: landing-move-in .5s ease-in 1s;
+  animation-fill-mode: forwards;
+}
+
+.Landing-signal{
+  padding-top: 100px;
+  width: 100%;
+  height: 40%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  z-index: 0;
+}
+
+.Landing-signal-fit{
+  height: 100%;
+}
 
 /*  Home page */
 
@@ -221,7 +267,7 @@ html,body
 .Home-header{
   width: 100vw;
   height: 75px;
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -237,7 +283,7 @@ html,body
 .Home-sub{
   width: 100vw;
   height: 100px;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   display: flex;
   justify-content: center;
@@ -253,13 +299,21 @@ html,body
 
 .Home-body{
   padding-top: 5px;
-  height: 1450px;
+  height: 1100px;
   background-color: var(--off-white);
   color: var(--second);
 }
 
+.Home-body-lil-big{
+  height: 1300px;
+}
+
 .Home-body-lite{
   height: 1425px;
+}
+
+.Home-body-ex-lite{
+  height: 1125px;
 }
 
 .Home-body-line{
@@ -273,7 +327,7 @@ html,body
   border-radius: 30px;
   background-color: white;
   width: 1625px;
-  height: 200px;
+  height: 150px;
   margin-right: 5px;
   margin-left: 5px;
   display: -webkit-box;
@@ -284,11 +338,16 @@ html,body
   animation-fill-mode: forwards;
 }
 
+.Body-top-anti-div{
+  display: -webkit-box;
+  width: 100%;
+}
+
 .Body-elements{
   border-radius: 30px;
   background-color: white;
-  width: 1050px;
-  height: 350px;
+  width: 1000px;
+  height: 250px;
   margin-right: 10px;
   margin-left: 10px;
   display: flex;
@@ -305,21 +364,26 @@ html,body
   height: 700px;
 }
 
+.Body-elements-appt{
+  margin-left: 2.5%;
+  width: 95%;
+  height: 700px;
+  margin-right: 2.5%;
+}
+
 .Body-elements-patient{
   width: 1300px;
   height: 200px
 }
 
 .Body-element-smaller{
-  width: 500px; 
+  width: 400px; 
   animation: body-element-move-in .25s ease-in .5s;
   animation-fill-mode: forwards;
 }
 
 .Body-top-block{
   width: 20.5%;
-  margin-left: 1.25%;
-  margin-right: 1.25%;
   align-items: center;
   justify-content: center;
   vertical-align: center;
@@ -330,8 +394,8 @@ html,body
 }
 
 .Body-top-text{
-  margin-top: 50px;
-  font-size: 23px;
+  margin-top: 30px;
+  font-size: 20px;
   white-space: break-spaces;
   text-align: left;
 }
@@ -342,19 +406,38 @@ html,body
 }
 
 .Home-icon-image{
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin-left: 10%;
   margin-top: 2%;
 }
 
 @media screen and (min-width: 1200px) {
   .Home-icon-image{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     margin-left: 17.5%;
     margin-top: 0;
   }
+}
+
+.Home-insights-text{
+  margin-top: 60px;
+  font-size: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
+  white-space: break-spaces;
+  text-align: center;
+  display: inline-flex;
+}
+
+.Home-insights-block{
+  width: 100%;
+  margin-left: 1.25%;
+  margin-right: 1.25%;
+  align-items: center;
+  justify-content: center;
+  vertical-align: center;
 }
 
 .Home-chart-header{
@@ -381,7 +464,7 @@ html,body
 
 /* !important necessary to overwrite default chart height */
 
-.Component-root-1{
+.Chart{
   height: 100% !important;
 }
 
@@ -393,6 +476,7 @@ html,body
  width: 100%;
  text-align: center;
  font-weight: bold;
+ font-size: 25px;
  color: var(--second-light);
 }
 
@@ -404,7 +488,7 @@ table{
 tr{
   margin: 0;
   width: 100%;
-  height: 30%;
+  height: 24%;
   text-align: left;
   background-color: var(--off-white);
   border-radius: 6px;
@@ -416,7 +500,7 @@ td{
 }
 
 .Home-table-values{
-  font-size: 50px;
+  font-size: 35px;
   padding-right: 0%;
   text-align: center;
   width: 55%;
@@ -426,7 +510,7 @@ td{
 .Home-table-text-time{
   width: 30%;
   padding-right: 5%;
-  padding-top: 10px;
+  padding-top: 20px;
   padding-bottom: 40px;
   padding-left: 10px;
   color: var(--second-light);
@@ -460,8 +544,8 @@ tbody{
 }
 
 .Home-dex{
-  width: 250px;
-  height: 250px;
+  width: 175px;
+  height: 175px;
   margin: 0;
 }
 
@@ -477,10 +561,10 @@ tbody{
 
 .Home-dex-image-text {
   height: 0;
-  right: 170px;
-  top: 72.5px;
+  right: 130px;
+  top: 42.5px;
   position: relative;
-  font-size: 28px;
+  font-size: 23px;
   z-index: 3;
   font-family: 'Roboto', sans-serif;
   font-weight: bold;
@@ -495,13 +579,14 @@ tbody{
   width: 100%;
   margin: 0;
   text-align: center;
+  font-size: 20px;
   justify-content: center;
   font-weight: normal;
 }
 
 .Home-heart{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     margin: 0px;
 }
 
@@ -510,19 +595,20 @@ tbody{
   height: 60%;
   position: relative;
   bottom: 10px;
-  margin-left: 20%;
+  margin-left: 15%;
   animation: heart-beat 1s ease-in 1s infinite;
 }
 
 .Home-heart-text{
   font-size: 30px;
   position: relative;
-  right: 143.25px;
-  top: 62.5px;
+  right: 121.25px;
+  top: 42.5px;
 }
 
 .Home-heart-sub{
   bottom: 0px;
+  font-size: 20px;
 }
 
 .Home-provider-click{
@@ -532,6 +618,21 @@ tbody{
 
 .Home-provider-click:hover{
   margin-top: 50px;
+}
+
+.Home-top-button{
+  border-radius: 30px;
+  background-color: white;
+  width: 1000px;
+  height: 80px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: body-element-move-in .25s ease-in .25s;
+  animation-fill-mode: forwards;
 }
 
 /* Appointments Page */
@@ -552,11 +653,11 @@ tbody{
 
 /* had to use important to override theme*/
 
-.Cell-highlightedText-46{
+.Cell-highlightedText-40{
   color: var(--main) !important;
 }
 
-.makeStyles-appointment-96 {
+.makeStyles-appointment-317 {
   background-color: var(--main-light) !important;
 }
 
@@ -569,12 +670,12 @@ tbody{
 .Sign-in{
   display:flex;
   width: 100%;
-  padding-top: 60px;
+  padding-top: 20px;
   justify-content: center;
 }
 .Sign-in-page
 {
-  height: 750px;
+  height: 650px;
   width: 100%;
   line-height: 3;
   background-color: var(--off-white);
@@ -609,8 +710,8 @@ tbody{
 .Sign-in-button{
   margin-left: 2.5%;
   margin-right: 2.5%;
-  width: 300px;
-  height: 400px;
+  width: 275px;
+  height: 325px;
   flex-wrap: wrap;
   border: none;
   border-radius: 6px;
@@ -623,12 +724,14 @@ tbody{
 
 .Sign-in-icon{
   width: 70%;
-  height: 50%;
+  height: 55%;
   z-index: 3;
 }
 
 .Sign-in-button-text{
+  font-size: 20px;
   color: var(--off-white);
+  padding-bottom: 30px;
 }
 
 /* Sign Up Page */
